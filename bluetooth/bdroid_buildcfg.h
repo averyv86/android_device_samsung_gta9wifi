@@ -12,7 +12,6 @@
 
 // Bluetooth adapter settings
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
-#define BLUETOOTH_QTI_SW TRUE
 #define BT_CLEAN_TURN_ON_DISABLED 1
 
 // LE features
