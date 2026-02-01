@@ -1,0 +1,31 @@
+# Android fstab file for Samsung Galaxy Tab A9 WiFi (gta9wifi)
+# MediaTek MT6789 platform
+
+# <src>                                     <mnt_point>      <type>  <mnt_flags and options>                              <fs_mgr_flags>
+
+# Boot
+/dev/block/platform/bootdevice/by-name/boot       /boot           emmc    defaults                                             recoveryonly
+/dev/block/platform/bootdevice/by-name/recovery   /recovery       emmc    defaults                                             recoveryonly
+
+# System
+/dev/block/mapper/system                          /system         ext4    ro,barrier=1                                         wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey
+/dev/block/mapper/vendor                          /vendor         ext4    ro,barrier=1                                         wait,slotselect,avb,logical,first_stage_mount
+/dev/block/mapper/product                         /product        ext4    ro,barrier=1                                         wait,slotselect,avb,logical,first_stage_mount
+
+# Data
+/dev/block/platform/bootdevice/by-name/userdata   /data           f2fs    noatime,nosuid,nodev,discard,reserve_root=32768,resgid=1065,fsync_mode=nobarrier    latemount,wait,check,quota,reservedsize=128M,checkpoint=fs,formattable,fileencryption=aes-256-xts:aes-256-cts,keydirectory=/metadata/vold/metadata_encryption
+/dev/block/platform/bootdevice/by-name/userdata   /data           ext4    noatime,nosuid,nodev,barrier=1,noauto_da_alloc      latemount,wait,check,quota,reservedsize=128M,formattable,fileencryption=aes-256-xts:aes-256-cts,keydirectory=/metadata/vold/metadata_encryption
+
+# Cache
+/dev/block/platform/bootdevice/by-name/cache      /cache          ext4    noatime,nosuid,nodev,barrier=1                       wait,check,formattable
+
+# Misc
+/dev/block/platform/bootdevice/by-name/metadata   /metadata       ext4    noatime,nosuid,nodev,discard                         wait,formattable,first_stage_mount
+/dev/block/platform/bootdevice/by-name/misc       /misc           emmc    defaults                                             defaults
+
+# External storage
+/devices/platform/externdevice*                   auto            vfat    defaults                                             voldmanaged=sdcard1:auto,encryptable=userdata
+/devices/platform/mt_usb*                         auto            vfat    defaults                                             voldmanaged=usb:auto
+
+# ZRAM
+/dev/block/zram0                                  none            swap    defaults                                             zramsize=50%

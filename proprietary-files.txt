@@ -1,0 +1,90 @@
+# Proprietary files for Samsung Galaxy Tab A9 WiFi (gta9wifi)
+# This file contains the list of proprietary blobs needed from the vendor
+
+# Audio - MediaTek specific
+vendor/lib/hw/audio.primary.mt6789.so
+vendor/lib64/hw/audio.primary.mt6789.so
+vendor/lib/libaudiocustparam.so
+vendor/lib64/libaudiocustparam.so
+vendor/lib/libaudiosetting.so
+vendor/lib64/libaudiosetting.so
+vendor/lib/libaudio_param_parser-vnd.so
+vendor/lib64/libaudio_param_parser-vnd.so
+
+# Bluetooth - MediaTek
+vendor/lib/hw/bluetooth.default.so
+vendor/lib64/hw/bluetooth.default.so
+
+# Camera
+vendor/lib/hw/camera.mt6789.so
+vendor/lib64/hw/camera.mt6789.so
+vendor/lib/libcam.hal3a.v3.so
+vendor/lib64/libcam.hal3a.v3.so
+vendor/lib/libcameracustom.so
+vendor/lib64/libcameracustom.so
+
+# DRM
+vendor/lib/mediadrm/libdrmclearkeyplugin.so
+vendor/lib64/mediadrm/libdrmclearkeyplugin.so
+
+# Graphics - Mali GPU
+vendor/lib/egl/libGLES_mali.so
+vendor/lib64/egl/libGLES_mali.so
+vendor/lib/hw/vulkan.mt6789.so
+vendor/lib64/hw/vulkan.mt6789.so
+vendor/lib/hw/gralloc.mt6789.so
+vendor/lib64/hw/gralloc.mt6789.so
+
+# GPS - MediaTek
+vendor/lib/hw/gps.mt6789.so
+vendor/lib64/hw/gps.mt6789.so
+
+# Keymaster - MediaTek
+vendor/lib/hw/keystore.mt6789.so
+vendor/lib64/hw/keystore.mt6789.so
+
+# Media - MediaTek codecs
+vendor/lib/libmtk_vt_wrapper.so
+vendor/lib64/libmtk_vt_wrapper.so
+vendor/lib/libmtkshifter.so
+vendor/lib64/libmtkshifter.so
+
+# Neural Networks - MediaTek APU
+vendor/lib/libneuropilot_hal_utils.so
+vendor/lib64/libneuropilot_hal_utils.so
+
+# Power - MediaTek
+vendor/lib/hw/power.mt6789.so
+vendor/lib64/hw/power.mt6789.so
+
+# RIL (not used on WiFi-only model, but may be present)
+# vendor/lib/libmtk-ril.so
+# vendor/lib64/libmtk-ril.so
+
+# Sensors
+vendor/lib/hw/sensors.mt6789.so
+vendor/lib64/hw/sensors.mt6789.so
+
+# Thermal - MediaTek
+vendor/lib/hw/thermal.mt6789.so
+vendor/lib64/hw/thermal.mt6789.so
+
+# WiFi - MediaTek
+vendor/lib/libwifi-hal-mt66xx.so
+vendor/lib64/libwifi-hal-mt66xx.so
+vendor/firmware/wifi/WIFI_RAM_CODE_MT6789.bin
+vendor/firmware/wifi/WIFI_MT6789.cfg
+
+# Firmware
+vendor/firmware/vpu_1.img
+vendor/firmware/vpu_2.img
+vendor/firmware/vpu_3.img
+vendor/firmware/apu_1.img
+vendor/firmware/apu_2.img
+vendor/firmware/gpu_mcupm.img
+
+# Other libs
+vendor/lib/libmtk_drvb.so
+vendor/lib64/libmtk_drvb.so
+vendor/lib/libmtkcam_stdutils.so
+vendor/lib64/libmtkcam_stdutils.so

@@ -1,0 +1,58 @@
+# Vendor properties for Samsung Galaxy Tab A9 WiFi (gta9wifi)
+
+# Audio
+ro.vendor.audio.sdk.fluencetype=none
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=true
+
+# Bluetooth
+ro.vendor.bluetooth.version=5.2
+
+# Camera
+persist.vendor.camera.privapp.list=com.android.camera
+vendor.camera.aux.packagelist=com.android.camera
+
+# Display
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.surface_flinger.protected_contents=true
+ro.vendor.display.framework.cmds_in_batch_limit=256
+
+# Graphics - Mali G57
+ro.hardware.egl=mali
+ro.hardware.vulkan=mali
+debug.renderengine.backend=skiaglthreaded
+
+# MediaTek platform
+ro.vendor.mediatek.platform=MT6789
+ro.vendor.mtk_config_max_dram_size=0x800000000
+ro.vendor.mtk_f2fs_enable=1
+ro.vendor.mtk_emmc_support=1
+
+# Media
+media.stagefright.thumbnail.prefer_hw_codecs=true
+vendor.mtk.vdec.waitkeyframeforplay=9
+
+# Performance
+ro.mtk_perf_simple_start_win=1
+ro.mtk_perf_fast_start_win=1
+ro.mtk_perf_response_time=1
+
+# Radio - disabled for WiFi-only model
+ro.carrier=wifi-only
+ro.radio.noril=1
+
+# Sensors
+ro.vendor.sensors.dev_ori=true
+ro.vendor.sensors.mot_detect=true
+
+# USB
+persist.vendor.usb.config=mtp,adb
+
+# WiFi
+wifi.interface=wlan0
+wifi.direct.interface=p2p0
+ro.vendor.wifi.sap.interface=ap0
+
+# Zygote
+ro.zygote=zygote64_32

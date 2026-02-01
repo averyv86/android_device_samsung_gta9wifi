@@ -1,0 +1,30 @@
+# Copyright (C) 2024 The LineageOS Project
+#
+# ueventd rules for Samsung Galaxy Tab A9 WiFi (MediaTek MT6789)
+
+# MediaTek specific
+/dev/mtk_cmdq              0640   system     system
+/dev/mtk_mdp               0640   system     system
+
+# Graphics (Mali)
+/dev/mali0                 0666   system     graphics
+/dev/ion                   0664   system     system
+
+# Video
+/dev/video*                0660   media      media
+
+# Camera
+/dev/camera*               0660   media      camera
+
+# DRM
+/dev/dri/*                 0666   system     graphics
+
+# Sensors
+/dev/m_acc_misc            0660   system     system
+/dev/m_gyro_misc           0660   system     system
+
+# WiFi
+/dev/wmtWifi               0660   wifi       wifi
+
+# Firmware
+/vendor/firmware/*         0644   root       root

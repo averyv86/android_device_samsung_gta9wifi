@@ -1,320 +1,178 @@
-<p align="center">
-  <a href="https://github.com/blacktop/ipsw"><img alt="IPSW Logo" src="https://github.com/blacktop/ipsw/raw/master/www/static/img/logo/ipsw.svg" height="140" /></a>
-  <h1 align="center">ipsw</h1>
-  <h4><p align="center">iOS/macOS Research Swiss Army Knife</p></h4>
-  <p align="center">
-    <a href="https://github.com/blacktop/ipsw/actions" alt="Actions">
-          <img src="https://github.com/blacktop/ipsw/actions/workflows/go.yml/badge.svg" /></a>
-    <a href="https://github.com/blacktop/ipsw/releases/latest" alt="Downloads">
-          <img src="https://img.shields.io/github/downloads/blacktop/ipsw/total.svg" /></a>
-    <a href="https://github.com/blacktop/ipsw/releases" alt="GitHub Release">
-          <img src="https://img.shields.io/github/release/blacktop/ipsw.svg" /></a>
-    <a href="http://doge.mit-license.org" alt="LICENSE">
-          <img src="https://img.shields.io/:license-mit-blue.svg" /></a>
-</p>
-<br>
+# Device Tree for Samsung Galaxy Tab A9 WiFi (gta9wifi)
 
-## What is `ipsw` 🤔
+## Device Information
 
-**ipsw** is a comprehensive command-line research framework for iOS and macOS. It provides an extensive toolkit for security researchers, reverse engineers, jailbreak developers, and iOS enthusiasts to download, parse, and analyze Apple firmware and interact with iOS devices.
+**Device:** Samsung Galaxy Tab A9 WiFi  
+**Model:** SM-X110  
+**Codename:** gta9wifi  
+**Manufacturer:** Samsung Electronics
 
-### Core Capabilities
+## Device Specifications
 
-- 📱 **IPSW/OTA Analysis** - Download, extract, and analyze iOS firmware files
-- 🔍 **Binary Analysis** - Advanced Mach-O parsing with ARM disassembly and AI assistance  
-- 🧠 **dyld_shared_cache** - Complete shared cache analysis with ObjC/Swift class dumping
-- 🔧 **Kernel Analysis** - Kernelcache parsing, syscall extraction, and symbolication
-- 📲 **Device Interaction** - Comprehensive iOS device management and debugging
-- 🔐 **Firmware Research** - IMG4, iBoot, SEP, and co-processor firmware analysis
-- 🏪 **App Store Connect** - Full API integration for app and certificate management
-- 🛠️ **Developer Tools** - SSH, Frida, debugging, and reverse engineering utilities
+### Processor (MediaTek Helio G99)
+- **SoC:** MediaTek Helio G99 (MT6789 / MT8781)
+- **Process:** 6nm TSMC
+- **CPU:** Octa-core
+  - 2x ARM Cortex-A76 @ 2.2 GHz (performance cores)
+  - 6x ARM Cortex-A55 @ 2.0 GHz (efficiency cores)
+- **GPU:** ARM Mali-G57 MC2
 
-## Quick Start
+### Display
+- **Type:** TFT LCD
+- **Size:** 8.7 inches
+- **Resolution:** 1340 x 800 pixels
+- **Aspect Ratio:** 16:10
 
-### Installation
+### Memory & Storage
+- **RAM:** 4GB / 8GB LPDDR4X
+- **Internal Storage:** 64GB / 128GB
+- **Expandable:** microSD card support (up to 1TB)
 
-#### macOS
-Using blacktop tap (includes extras)
-```bash
-brew install blacktop/tap/ipsw
-```
-Using official Homebrew formula
-```bash
-brew install ipsw
-```
+### Battery
+- **Capacity:** 5,100 mAh (non-removable)
+- **Charging:** 15W wired fast charging
 
-#### Linux
-```bash
-sudo snap install ipsw
-```
+### Operating System
+- **OS:** Android 13
+- **UI:** One UI 5.1
 
-#### Windows
-```bash
-scoop bucket add blacktop https://github.com/blacktop/scoop-bucket.git 
-scoop install blacktop/ipsw
-```
+### Connectivity
+- **WiFi:** 802.11 a/b/g/n/ac, dual-band
+- **Bluetooth:** 5.2
+- **USB:** USB Type-C 2.0
+- **Audio:** 3.5mm headphone jack
+- **Note:** WiFi only model - no cellular connectivity
 
-#### Go Install
-```bash
-go install github.com/blacktop/ipsw/cmd/ipsw@latest
-```
+### Camera
+- **Rear Camera:** 8 MP, AF
+- **Front Camera:** 2 MP
 
-### Basic Usage
+### Sensors
+- Accelerometer
+- Hall sensor (for cover detection)
 
-```bash
-# Download latest iOS IPSW
-ipsw download ipsw --device iPhone16,1 --latest
+## Building LineageOS/AOSP
 
-# Extract kernelcache
-ipsw extract --kernel iPhone16,1_18.2_22C150_Restore.ipsw
+### Prerequisites
+- Linux build environment (Ubuntu 20.04 or newer recommended)
+- Android build tools installed
+- At least 200GB free disk space
+- 16GB RAM minimum (32GB recommended)
 
-# Analyze dyld_shared_cache
-ipsw dyld info /path/to/dyld_shared_cache_arm64
-
-# Get device information
-ipsw idev list
-```
-
-## Major Features
-
-### 📱 IPSW & OTA Management
-- **Download Sources**: Apple, AppleDB, Developer Portal, RSS feeds, GitHub, iTunes, Wikipedia
-- **File Types**: IPSW, OTA, macOS installers, Xcode, KDKs, PCC files
-- **Operations**: Extract, diff, mount, analyze metadata
+### Sync Device Tree
 
 ```bash
-ipsw download ipsw --device iPhone16,1 --latest
-ipsw extract --kernel iPhone16,1_18.2_22C150_Restore.ipsw
-ipsw diff iPhone16,1_18.1_22B83_Restore.ipsw iPhone16,1_18.2_22C150_Restore.ipsw
+mkdir -p device/samsung
+cd device/samsung
+git clone https://github.com/averyv86/android_device_samsung_gta9wifi.git gta9wifi
 ```
 
-### 🔍 Binary Analysis & Reverse Engineering
-- **Mach-O Parsing**: Complete binary analysis with symbol extraction
-- **ARM Disassembly**: ARM v9-a disassembler with AI-powered analysis
-- **Code Signing**: Verify signatures, analyze entitlements
-- **Binary Patching**: Add, modify, or remove patches
+### Sync Vendor Files
 
 ```bash
-ipsw macho info /path/to/binary
-ipsw macho disass /path/to/binary --symbol _main
-ipsw macho search /path/to/binary --string "password"
+mkdir -p vendor/samsung
+cd vendor/samsung
+# Clone vendor repository when available
+# git clone https://github.com/[vendor-repo]/android_vendor_samsung_gta9wifi.git gta9wifi
 ```
 
-### 🧠 dyld_shared_cache Analysis
-- **Cache Parsing**: Extract and analyze the complete shared cache structure
-- **ObjC Analysis**: Class dumps, method analysis, protocol parsing
-- **Swift Support**: Swift class dumping and analysis (experimental)
-- **Symbol Management**: Symbol extraction and address resolution
+### Sync Kernel
 
 ```bash
-ipsw dyld info /path/to/dyld_shared_cache
-ipsw dyld extract /path/to/dyld_shared_cache --dylib Foundation
-ipsw dyld objc class /path/to/dyld_shared_cache --class NSString
+mkdir -p kernel/samsung
+cd kernel/samsung
+# Clone kernel repository when available
+# git clone https://github.com/[kernel-repo]/android_kernel_samsung_gta9wifi.git gta9wifi
 ```
 
-### 📲 iOS Device Interaction (`idev`)
-- **File System**: Browse and transfer files via AFC
-- **App Management**: Install, uninstall, and analyze applications
-- **Backup & Restore**: Complete device backup operations
-- **Development**: Mount developer images, capture logs, packet capture
-- **Diagnostics**: Battery info, crash logs, system diagnostics
+### Build LineageOS
 
 ```bash
-ipsw idev list
-ipsw idev afc ls /
-ipsw idev apps ls
-ipsw idev backup create
-ipsw idev syslog
+. build/envsetup.sh
+lunch lineage_gta9wifi-userdebug
+mka bacon
 ```
 
-### 🔐 Firmware & Security Analysis
-- **IMG4**: Parse and decrypt Image4 format files
-- **iBoot**: Bootloader analysis and research
-- **SEP**: Secure Enclave Processor firmware analysis
-- **AEA**: Apple Encrypted Archives decryption
-- **Co-processors**: AOP, DCP, GPU, Camera firmware analysis
+### Build AOSP
 
 ```bash
-ipsw img4 dec iBoot.img4
-ipsw fw sep iPhone16,1_18.2_22C150_Restore.ipsw
-ipsw fw iboot iPhone16,1_18.2_22C150_Restore.ipsw
+. build/envsetup.sh
+lunch aosp_gta9wifi-userdebug
+m -j$(nproc --all)
 ```
 
-### 🏪 App Store Connect Integration
-- **Certificate Management**: iOS/macOS certificates and profiles
-- **Device Registration**: Manage development devices
-- **App Management**: Bundle IDs, capabilities, and reviews
-- **Provisioning**: Complete provisioning profile lifecycle
+## Extracting Proprietary Files
+
+The device requires proprietary blobs from Samsung's stock firmware. To extract these:
+
+1. Download the stock firmware from Samsung
+2. Extract the system partition
+3. Connect the device with ADB enabled or mount the system partition
+4. Run the extraction script:
 
 ```bash
-ipsw appstore cert ls
-ipsw appstore device reg --name "My Device" --udid 1234567890
-ipsw appstore profile create --name "Development Profile"
+./extract-files.sh
 ```
 
-### 🛠️ Advanced Research Tools
-- **Symbolication**: Crash log analysis and symbol resolution
-- **Class Dumping**: ObjC and Swift class extraction
-- **SSH Access**: Jailbroken device SSH with debugserver
-- **Frida Integration**: Dynamic instrumentation capabilities
-- **AI Powered Decompiler**: Integration with Claude, OpenAI, Gemini, Ollama and OpenRouter
+## Important Warnings
 
-```bash
-ipsw symbolicate crash.ips --dsym /path/to/symbols
-ipsw class-dump /path/to/binary
-ipsw ssh debugserver
+⚠️ **CRITICAL WARNING** ⚠️
+
+This device uses a **MediaTek Helio G99 (MT6789)** processor, NOT Qualcomm Snapdragon!
+
+- **DO NOT** flash ROMs built for Qualcomm/Snapdragon devices
+- **DO NOT** use Snapdragon-based device trees
+- **DO NOT** flash kernels built for other chipsets
+
+**Flashing incorrect firmware can brick your device!**
+
+Always verify:
+- Device model: SM-X110
+- Platform: MediaTek MT6789 (Helio G99)
+- Codename: gta9wifi
+
+## Device Tree Structure
+
+```
+android_device_samsung_gta9wifi/
+├── AndroidProducts.mk          # Product definitions
+├── BoardConfig.mk              # Board/hardware configuration
+├── device.mk                   # Device-specific packages and properties
+├── lineage_gta9wifi.mk         # LineageOS product configuration
+├── README.md                   # This file
+├── extract-files.sh            # Script to extract proprietary files
+├── setup-makefiles.sh          # Script to generate makefiles
+├── proprietary-files.txt       # List of proprietary files needed
+├── overlay/                    # Device-specific overlay resources
+├── configs/                    # Device-specific configuration files
+└── rootdir/                    # Root filesystem files (init scripts, etc.)
 ```
 
-## Architecture
+## Status
 
-**ipsw** consists of two main components:
+- [x] Initial device tree setup
+- [ ] Kernel source integration
+- [ ] Vendor blobs extraction
+- [ ] Hardware support verification
+- [ ] Camera HAL integration
+- [ ] Audio HAL integration
+- [ ] WiFi/Bluetooth testing
+- [ ] Sensor support
+- [ ] Power management optimization
 
-- **`ipsw`** - Main CLI tool with complete analysis capabilities
-- **`ipswd`** - REST API daemon for remote operations and automation
+## References
 
-## Configuration
-
-ipsw supports YAML configuration files and environment variables:
-
-```bash
-# Create config directory
-mkdir -p ~/.config/ipsw
-
-# Copy example config
-cp config.example.yml ~/.config/ipsw/config.yaml
-```
-
-### Database Support
-- **SQLite** (default) - Local storage
-- **PostgreSQL** - Production deployments
-
-### AI Decompiler
-> https://blacktop.github.io/ipsw/docs/guides/decompiler
-```bash
-❱ ipsw macho disass /System/Library/PrivateFrameworks/ApplePushService.framework/apsd --entry \
-             --dec --dec-model "Claude 3.7 Sonnet"
-   • Loading symbol cache file...
-   • Decompiling... 🕒
-```
-```objc
-int main(int argc, char *argv[]) {
-    @autoreleasepool {
-        __set_user_dir_suffix(@"com.apple.apsd");
-
-        @autoreleasepool {
-            APSDaemon *daemon = [[APSDaemon alloc] init];
-
-            if (daemon) {
-                NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-                [runLoop run];
-                [runLoop release];
-            }
-
-            [daemon release];
-        }
-
-        return 0;
-    }
-
-    @catch (NSException *exception) {
-        if ([exception reason] == 1) {
-            id exceptionObj = [exception retain];
-            id logger = [APSLog daemon];
-
-            if (_os_log_type_enabled(logger, 0x11)) {
-                [exceptionObj logWithLogger:logger];
-            }
-
-            [logger release];
-            [exceptionObj release];
-        }
-    }
-}
-```
-
-## Use Cases
-
-### Security Research
-- Vulnerability analysis and exploit development
-- Firmware security assessment
-- Binary reverse engineering
-
-### Jailbreak Development  
-- Bootchain analysis and exploitation
-- Kernel extension research
-- System modification and patching
-
-### iOS Development
-- App debugging and analysis
-- Certificate and provisioning management
-- Device testing and automation
-
-### Digital Forensics
-- Device data extraction and analysis
-- Timeline reconstruction
-- Artifact analysis
-
-## Requirements
-
-- **Go**: 1.24+ (for building from source)
-- **Platform**: macOS, Linux, Windows
-- **USB**: libusb for device interaction
-- **Optional**: AI API keys for enhanced analysis
-
-## Documentation
-
-- **Website**: [https://blacktop.github.io/ipsw](https://blacktop.github.io/ipsw)
-- **API Docs**: REST API documentation available at `/docs` when running `ipswd`
-- **Examples**: Comprehensive usage examples in the documentation
-
-### 🆕 AI-Powered Wiki
-
-Ask questions about the repository using AI:
-- [DeepWiki for IPSW](https://deepwiki.com/blacktop/ipsw)
-
-> [!WARNING]
-> AI responses may contain hallucinations - verify important information.
-
-## Community Resources
-
-### 📊 IPSW Diffs
-Pre-computed firmware differences: [ipsw-diffs](https://github.com/blacktop/ipsw-diffs)
-
-### 💬 Community
-[![Follow Twitter](https://img.shields.io/badge/follow_on_twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/blacktop__)
-[![Follow Mastodon](https://img.shields.io/badge/follow_on_mastodon-6364FF?style=for-the-badge&logo=mastodon&logoColor=white)](https://mastodon.social/@blacktop)
-[![GitHub Discussions](https://img.shields.io/badge/GITHUB_DISCUSSION-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/blacktop/ipsw/discussions)
-
-## Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-### Development
-```bash
-git clone https://github.com/blacktop/ipsw.git
-cd ipsw
-make build
-```
-
-## Known Issues
-
-- **macOS IPSW Support**: Some macOS firmware operations may have compatibility issues
-- **Testing**: Comprehensive testing is challenging due to the variety of firmware versions and device types
-- **Resource Intensive**: Some operations require significant memory and processing power
-
-> Create an [issue](https://github.com/blacktop/ipsw/issues) if you encounter problems - fixes are prioritized! A comprehensive test suite is planned for future releases.
+- [GSMArena - Samsung Galaxy Tab A9](https://www.gsmarena.com/samsung_galaxy_tab_a9-12616.php)
+- [Device Specifications](https://www.devicespecifications.com/en/model/7c385dff)
+- [MediaTek Helio G99 Specifications](https://www.mediatek.com/products/smartphones-2/mediatek-helio-g99)
 
 ## Credits
 
-Huge thanks to:
-- **Jonathan Levin** for his legendary tools and comprehensive iOS internals documentation
-- **The iOS research community** for continuous innovation and knowledge sharing
-- All contributors who help make this project better
-
-## Stargazers
-
-[![Stargazers over time](https://starchart.cc/blacktop/ipsw.svg?variant=adaptive)](https://starchart.cc/blacktop/ipsw)
+- Samsung Electronics for the device
+- LineageOS Team
+- Android Open Source Project (AOSP)
+- MediaTek for the Helio G99 platform
 
 ## License
 
-MIT Copyright (c) 2018-2025 **blacktop**# android_device_samsung_gta9wifi
+Apache License 2.0 (unless otherwise specified)

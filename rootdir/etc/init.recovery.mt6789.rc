@@ -1,0 +1,19 @@
+# Copyright (C) 2024 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+
+import /vendor/etc/init/hw/init.mt6789.rc
+
+on fs
+    install_keyring
+
+on late-init
+    trigger early-fs
+
+on early-fs
+    # Mount fstab in recovery
+    mount_all /vendor/etc/fstab.mt6789 --early
+
+on fs
+    mount_all /vendor/etc/fstab.mt6789 --late
