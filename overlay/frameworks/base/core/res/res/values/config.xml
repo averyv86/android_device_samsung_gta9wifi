@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Device-specific configuration overlay for Samsung Galaxy Tab A9 WiFi -->
+<resources>
+    <!-- Is this a WiFi-only device? -->
+    <bool name="config_wifi_only">true</bool>
+
+    <!-- Enable doze mode -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+    
+    <!-- Whether device supports double tap to wake -->
+    <bool name="config_supportDoubleTapWake">false</bool>
+
+    <!-- Screen brightness -->
+    <integer name="config_screenBrightnessSettingMinimum">1</integer>
+    <integer name="config_screenBrightnessSettingMaximum">255</integer>
+    <integer name="config_screenBrightnessSettingDefault">128</integer>
+
+    <!-- Display density -->
+    <integer name="config_screenBrightnessDim">10</integer>
+
+    <!-- Default screen density -->
+    <integer name="config_defaultScreenDensity">240</integer>
+
+    <!-- Enable WiFi display -->
+    <bool name="config_enableWifiDisplay">true</bool>
+
+    <!-- Samsung Tab A9 WiFi specifications -->
+    <string name="config_mainBuiltInDisplayCutout" translatable="false"></string>
+    
+    <!-- Battery capacity in mAh -->
+    <integer name="config_battery_capacity">5100</integer>
+</resources>

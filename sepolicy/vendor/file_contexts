@@ -1,0 +1,7 @@
+# SELinux policy for Samsung Galaxy Tab A9 WiFi
+# MediaTek MT6789 platform specific policies
+
+# Add device-specific policies here
+# Example:
+# type mediatek_hal, domain;
+# type mediatek_hal_exec, exec_type, vendor_file_type, file_type;
